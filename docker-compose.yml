@@ -8,12 +8,12 @@ networks:
   php_advanced:
     driver: bridge
 
-servicer:
+services:
   app:
     build:
       context: docker/php
     restart: always
-    valumes:
+    volumes:
       - .:/var/www/html
     ports:
       - "8081:80"
@@ -21,9 +21,12 @@ servicer:
       - php_advanced
   db:
     image: "mysql:8"
-    restar: always
-    ports: -"33060:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secrit
+    ports:
+      - "33061:3306"
     volumes:
-      - "db_valume:/var/lib/mysql"
+      - "db_volume:/var/lib/mysql"
     networks:
       - php_advanced

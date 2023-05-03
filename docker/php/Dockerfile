@@ -2,6 +2,8 @@ FROM php:8.2-apache
 COPY . /var/www/html
 WORKDIR /var/www/html
 
+RUN docker-php-ext-install -j$(nproc) pdo_mysql
+
 RUN /usr/sbin/a2enmod rewrite
 
 # local file -> Docker file
