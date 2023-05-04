@@ -1,2 +1,4 @@
 <?php
-phpinfo();
+// phpinfo();
+
+include './DZ/dz2ValueObject.php';
