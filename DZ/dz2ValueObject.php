@@ -80,7 +80,7 @@ $color = new Color(200, 200, 200);
 $color_1 = new Color(100, 100, 100);
 // var_dump($color->equals($color_1));
 // var_dump($color->mix($color_1));
-// var_dump($color->random($color_1));
+var_dump($color->random($color_1));
 $mixedColor = $color->mix($color_1);
 var_dump($mixedColor->getRed());
 var_dump($mixedColor->getGreen());
