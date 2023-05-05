@@ -1,6 +1,6 @@
 <?php
 
-class ValueObject {
+class Color {
     private $red;
     private $green;
     private $blue;
@@ -15,7 +15,6 @@ class ValueObject {
 
     public function getRed() {
         return $this->red;
-
     }
 
     public function setRed($red) {
@@ -51,7 +50,7 @@ class ValueObject {
     }
 
     public function equals($color) {
-        if ($color instanceof ValueObject &&
+        if ($color instanceof Color &&
 
             $color->getRed() == $this->red &&
             $color->getGreen() == $this->green &&
@@ -65,22 +64,24 @@ class ValueObject {
         $red = rand(0, 255);
         $green = rand(0, 255);
         $blue = rand(0, 255);
-        return new ValueObject($red, $green, $blue);
+        return new Color($red, $green, $blue);
     }
 
     public function mix($color) {
-        if (!($color instanceof ValueObject)) {
-            throw new InvalidArgumentException("Invalid color");
-        }
         $red = round(($this->red + $color->getRed()) / 2);
         $green = round(($this->green + $color->getGreen()) / 2);
         $blue = round(($this->blue + $color->getBlue()) / 2);
-        return new ValueObject($red, $green, $blue);
+        return new Color($red, $green, $blue);
     }
 
 }
 
-$color = new ValueObject(100, 200, 100);
-$color_1 = new ValueObject(200, 155, 95);
+$color = new Color(200, 200, 200);
+$color_1 = new Color(100, 100, 100);
 // var_dump($color->equals($color_1));
-echo $color->equals($color_1);
+// var_dump($color->mix($color_1));
+// var_dump($color->random($color_1));
+$mixedColor = $color->mix($color_1);
+var_dump($mixedColor->getRed());
+var_dump($mixedColor->getGreen());
+var_dump($mixedColor->getBlue());
