@@ -23,6 +23,7 @@ class Color {
         } else {
             $this->red = $red;
         }
+
     }
 
     public function getGreen() {
