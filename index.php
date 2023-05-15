@@ -4,7 +4,8 @@
 // include './DZ/dz2ValueObject.php';
 // include './DZ/dzTrait.php';
 // include './DZ/dzOverloading.php';
-include './DZ/dzExceptions.php';
+// include './DZ/dzExceptions.php';
+include './DZ/dzOpenClosed.php'
 ?>
 
 <!-- <!DOCTYPE html>
