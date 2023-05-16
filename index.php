@@ -1,9 +1,10 @@
 <?php
-// phpinfo();
+phpinfo();
 
 // include './DZ/dz2ValueObject.php';
 // include './DZ/dzTrait.php';
 // include './DZ/dzOverloading.php';
+<<<<<<< Updated upstream
 // include './DZ/dzExceptions.php';
 include './DZ/dzOpenClosed.php'
 ?>
@@ -23,3 +24,6 @@ include './DZ/dzOpenClosed.php'
 </body>
 </html> -->
 
+=======
+include './DZ/dzExceptions.php';
+>>>>>>> Stashed changes
