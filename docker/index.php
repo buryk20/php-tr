@@ -4,7 +4,7 @@ phpinfo();
 // include './DZ/dz2ValueObject.php';
 // include './DZ/dzTrait.php';
 // include './DZ/dzOverloading.php';
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
 // include './DZ/dzExceptions.php';
 include './DZ/dzOpenClosed.php'
 ?>

@@ -2,9 +2,9 @@ FROM php:8.2-apache
 COPY . /var/www/html
 WORKDIR /var/www/html
 
-RUN apt-get  && install -y git
+# RUN apt-get  && install -y git
 
-RUN docker-php-ext-install -j$(nproc) pdo_mysql
+# RUN docker-php-ext-install -j$(nproc) pdo_mysql
 
 RUN /usr/sbin/a2enmod rewrite
 
