@@ -1,54 +1,81 @@
 <?php
-class Logger
+interface FormatterInterface
 {
+    public function format($string);
+}
 
-    private $format;
-    private $delivery;
-
-    public function __construct($format, $delivery) {
-        $this->format = $format;
-        $this->delivery = $delivery;
-    }
-
-    public function log($string) {
-        $formattedString = $this->format($string);
-        $this->deliver($formattedString);
-    }
-
-    private function format($string) {
-        switch ($this->format) {
-            case 'raw':
-                return $string;
-                break;
-            case 'with_date':
-                return date('Y-m-d H:i:s') . $string;
-                break;
-            case 'with_date_and_details':
-                return date('Y-m-d H:i:s') . $string . ' - With some details';
-                break;
-            default:
-                die('Error format');
-        }
-    }
-
-    private function deliver($formattedString) {
-        switch ($this->delivery) {
-            case 'by_email':
-                echo "Вивід формату ({$formattedString}) по електронній пошті";
-                break;
-            case 'by_sms':
-                echo "Вивід формату ({$formattedString}) в SMS";
-                break;
-            case 'to_console':
-                echo "Вивід формату ({$formattedString}) в консоль";
-                break;
-            default:
-                die('Error deliver');
-        }
+class RawFormatter implements FormatterInterface
+{
+    public function format($string)
+    {
+        return $string;
     }
 }
 
+class DateFormatter implements FormatterInterface
+{
+    public function format($string)
+    {
+        return date('Y-m-d H:i:s') . $string;
+    }
+}
 
-$logger = new Logger('with_date_and_details', 'by_sms');
-$logger->log("</br> Test");
-// var_dump($logger);
+class DateFormatterWithDetails implements FormatterInterface
+{
+    public function format($string)
+    {
+        return date('Y-m-d H:i:s') . $string . ' - With some details';
+    }
+}
+
+interface DeliveryInterface
+{
+    public function deliver($format);
+}
+
+class EmailDelivery implements DeliveryInterface
+{
+    public function deliver($format)
+    {
+        echo "Вывод формата ({$format}) по имейл";
+    }
+}
+
+class SmsDelivery implements DeliveryInterface
+{
+    public function deliver($format)
+    {
+        echo "Вывод формата ({$format}) в смс";
+    }
+}
+
+class ConsoleDelivery implements DeliveryInterface
+{
+    public function deliver($format)
+    {
+        echo "Вывод формата ({$format}) в консоль";
+    }
+}
+
+class Logger
+{
+    private $formatter;
+    private $delivery;
+
+    public function __construct(FormatterInterface $formatter, DeliveryInterface $delivery)
+    {
+        $this->formatter = $formatter;
+        $this->delivery = $delivery;
+    }
+
+    public function log($string)
+    {
+        $formattedString = $this->formatter->format($string);
+        $this->delivery->deliver($formattedString);
+    }
+}
+
+$formatter = new RawFormatter();
+$delivery = new SmsDelivery();
+$logger = new Logger($formatter, $delivery);
+$logger->log('Emergency error! Please fix me!');

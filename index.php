@@ -5,7 +5,8 @@
 // include './DZ/dzTrait.php';
 // include './DZ/dzOverloading.php';
 // include './DZ/dzExceptions.php';
-include './DZ/dzOpenClosed.php'
+// include './DZ/dzOpenClosed.php'
+include './DZ/test.php'
 ?>
 
 <!-- <!DOCTYPE html>

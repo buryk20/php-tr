@@ -1,7 +1,6 @@
 <?php
-class Test {
-    public function a()
-    {
-        return 1;
-    }
-}
+$string = "Hello, World!";
+
+function dnaToRna($str, $litter) {
+    return str_replace();
+  }
