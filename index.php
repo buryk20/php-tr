@@ -1,2 +1,2 @@
 <?php
-include './DZ/test.php';
+require "./DZ/FactoryMethodTaxi.php";
