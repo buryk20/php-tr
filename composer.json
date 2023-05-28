@@ -2,7 +2,9 @@
     "name": "yourname/php-tr",
     "autoload": {
         "psr-4": {
-            "Yourname\\PhpTr\\": "src/"
+            "Config\\": "Config/",
+            "Core\\": "Core/",
+            "App\\": "App/"
         }
     },
     "authors": [
@@ -10,5 +12,7 @@
             "name": ","
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
 }
