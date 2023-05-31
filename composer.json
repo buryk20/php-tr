@@ -5,7 +5,10 @@
             "Config\\": "Config/",
             "Core\\": "Core/",
             "App\\": "App/"
-        }
+        },
+        "files": [
+            "Config/helpers.php"
+        ]
     },
     "authors": [
         {
@@ -13,6 +16,8 @@
         }
     ],
     "require": {
-        "vlucas/phpdotenv": "^5.5"
+        "larapack/dd": "^1.0",
+        "vlucas/phpdotenv": "^5.5",
+        "ext-pdo": "*"
     }
 }

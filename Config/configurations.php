@@ -6,4 +6,4 @@ return [
         'user' => getenv('DB_USER') ?? null,
         'password' => getenv('DB_PASSWORD') ?? null
     ]
-]
+];
