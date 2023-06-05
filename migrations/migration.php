@@ -11,8 +11,6 @@ $dotenv->load();
 
 // \Core\Db::connect();
 
-
-
 class Migration
 {
 
@@ -27,11 +25,28 @@ class Migration
         $this->db = Db::connect();
         try {
             $this->db->beginTransaction();
-            $this->db->commit();
+            $this->createkMigrationTable();
+            if ($this->db->inTransaction()) {
+                $this->db->commit();
+            }
         } catch (PDOException $exception) {
             $this->db->rollBack();
             d($exception->getMessage(), $exception->getTrace());
         }
+    }
+
+    protected function createkMigrationTable()
+    {
+        d('------ Prepare migration table query -------');
+        $sql = file_get_contents(static::SCRITPS_DIR . static::MIGRATIONS_TABLE . '.sql');
+        $query = $this->db->prepare($sql);
+        $result = match ($query->execute()) {
+            true => '- Migration table was created (or already exists)',
+            false => '- Failed'
+        };
+
+        d($result);
+        d('------ Finished migration table query -------');
     }
 }
 

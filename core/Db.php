@@ -12,14 +12,14 @@ class Db
     public static function connect(): PDO
     {
         if (is_null(static::$connect)) {
-            $dns = "mysql:host=" . config('db.host') . ";dbname" . config('db.database');
+            $dsn = "mysql:host=" . config('db.host') . ";dbname=" . config('db.database');
             $options = [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ];
 
             static::$connect = new PDO(
-                $dns,
+                $dsn,
                 config('db.user'),
                 config('db.password'),
                 $options
