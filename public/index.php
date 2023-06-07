@@ -16,13 +16,3 @@ try {
 } catch (Exception $exception) {
     dd("Exception", $exception->getMessage());
 }
-
-$text   = "These are a few words :) ...  ";
-$binary = "\x09Example string\x0A";
-$hello  = "Hello World";
-var_dump($text, $binary, $hello);
-
-print "\n";
-
-$trimmed = str_replace(" ", '', $text);
-dd($trimmed);
